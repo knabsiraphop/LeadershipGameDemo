@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e106aba7c900c54ea720a8f15894150, type: 3}
+  m_Name: GameContentConfig
+  m_EditorClassIdentifier: LeadershipGame.Core::LeadershipGame.GameContentConfig
+  AllTasks:
+  - {fileID: 11400000, guid: f201b3b69fead73429ae6c829edb943e, type: 2}
+  - {fileID: 11400000, guid: f455996ab1ddb0043ad5e49688362235, type: 2}
+  - {fileID: 11400000, guid: b8d1d71d98afae94eb5a800868bef97b, type: 2}
+  - {fileID: 11400000, guid: 304b478b1f5c0794d8e0ad14405ceec8, type: 2}
+  - {fileID: 11400000, guid: 612a7a3934a5cf54ba77374c0c73a25e, type: 2}
+  AllMembers:
+  - {fileID: 11400000, guid: 3a73647dd89d318409847d0a68aa4b8d, type: 2}
+  - {fileID: 11400000, guid: bb0f09e0514bc774d87f3a1b3b3f54df, type: 2}
+  - {fileID: 11400000, guid: 6958d58c9d16b8943884c49ed985d1f5, type: 2}

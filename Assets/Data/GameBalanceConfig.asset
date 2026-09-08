@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff68b0dcbf3e87441b69e60dee4de30a, type: 3}
+  m_Name: GameBalanceConfig
+  m_EditorClassIdentifier: LeadershipGame.Core::LeadershipGame.GameBalanceConfig
+  RoundDuration: 90
+  HighUrgencyWeight: 2
+  MedUrgencyWeight: 1.5
+  LowUrgencyWeight: 1
+  StrongDelegatorCutoff: 0.85
+  DevelopingCutoff: 0.5
