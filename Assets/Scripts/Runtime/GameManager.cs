@@ -11,6 +11,7 @@ namespace LeadershipGame
         private readonly RoundTimer timer = new RoundTimer();
         private readonly AssignmentTracker assignmentTracker = new AssignmentTracker();
 
+        public GameData Data => gameData;
         public IReadOnlyList<TaskData> Tasks => gameData.Content.AllTasks;
         public IReadOnlyList<TeamMemberData> Members => gameData.Content.AllMembers;
 
