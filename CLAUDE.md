@@ -22,6 +22,14 @@ Requires the Unity Editor to be open with this project loaded and the MCP bridge
 
 Its own skill docs live under `.claude/skills/` (auto-generated, one `SKILL.md` per tool) — not project-specific instructions, just tool reference.
 
+## AI Tools Note logging
+
+`docs/AI_TOOLS_NOTE.md` is a scored submission deliverable — AI tool usage is evaluated as its own criterion, and it must read as complete, not reconstructed after the fact.
+
+After each distinct AI-assisted session or task (a design discussion, a script written, an Editor edit pass via Unity-MCP, a git/GitHub action, a debugging session), append one bullet to its Development Log immediately — do not batch or reconstruct later. One bullet per coherent session, not per micro-action. Format matches existing entries: `- **YYYY-MM-DD** — <Session name>: <what AI did, 1-2 sentences>`. For MCP-driven Editor work, name what it caught or verified, not just that MCP was used.
+
+Use the `update-ai-tools-note` skill (`.claude/skills/update-ai-tools-note/`) at natural checkpoints (end of day, before a commit, before submission) to catch up anything missed and refresh the top "How used"/"Honest reflection" summary — not required after every single bullet.
+
 ## Package management caveat
 
 Headless/batchmode Unity runs on this machine have been flaky (a batchmode `-executeMethod` package-install script crashed previously). Prefer editing `Packages/manifest.json` directly over scripting Package Manager calls in batchmode.
