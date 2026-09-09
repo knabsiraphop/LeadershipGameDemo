@@ -16,6 +16,9 @@ namespace LeadershipGame
         [SerializeField] private TMP_Text timerText;
         [SerializeField] private SlicedFilledImage timerFill;
         [SerializeField] private Button endDayButton;
+        [SerializeField] private TMP_Text instructionText;
+        [SerializeField] private string defaultInstruction = "Select a task, then match it with a member.";
+        [SerializeField] private string taskSelectedInstruction = "Now pick a member for \"{0}\".";
         [Space]
         [SerializeField] private LegendSwatch legendSwatchPrefab;
         [SerializeField] private Transform legendContainer;
@@ -23,6 +26,7 @@ namespace LeadershipGame
         private GameManager gameManager;
         private TaskData selectedTask;
         private readonly Dictionary<TaskData, TaskButton> taskButtons = new Dictionary<TaskData, TaskButton>();
+        private readonly Dictionary<TeamMemberData, MemberButton> memberButtons = new Dictionary<TeamMemberData, MemberButton>();
 
         public override void Init(GameManager gameManager)
         {
@@ -34,6 +38,8 @@ namespace LeadershipGame
             BindEvents();
 
             RefreshTaskColors();
+            RefreshMemberLoads();
+            RefreshSelection();
             HandleTimerTick(gameManager.Data.Balance.RoundDuration);
         }
 
@@ -55,6 +61,7 @@ namespace LeadershipGame
                 var memberButton = Instantiate(memberButtonPrefab, memberContainer);
                 memberButton.Set(member);
                 memberButton.Button.onClick.AddListener(() => OnMemberClicked(member));
+                memberButtons[member] = memberButton;
             }
         }
 
@@ -76,7 +83,8 @@ namespace LeadershipGame
 
         private void OnTaskClicked(TaskData task)
         {
-            selectedTask = task;
+            selectedTask = selectedTask == task ? null : task;
+            RefreshSelection();
         }
 
         private void OnMemberClicked(TeamMemberData member)
@@ -85,11 +93,20 @@ namespace LeadershipGame
 
             gameManager.AssignTask(selectedTask, member);
             selectedTask = null;
+            RefreshSelection();
         }
 
-        private void HandleTaskAssigned(TaskData task, TeamMemberData member) => RefreshTaskColors();
+        private void HandleTaskAssigned(TaskData task, TeamMemberData member)
+        {
+            RefreshTaskColors();
+            RefreshMemberLoads();
+        }
 
-        private void HandleTaskUnassigned(TaskData task) => RefreshTaskColors();
+        private void HandleTaskUnassigned(TaskData task)
+        {
+            RefreshTaskColors();
+            RefreshMemberLoads();
+        }
 
         private void HandleTimerTick(float remaining)
         {
@@ -112,6 +129,39 @@ namespace LeadershipGame
                 graphic.color = member == null
                     ? gameManager.Data.UnassignedColor
                     : gameManager.Data.GetMatchColor(member.GetRelation(task.Type));
+            }
+        }
+
+        private void RefreshMemberLoads()
+        {
+            foreach (var pair in memberButtons)
+            {
+                var member = pair.Key;
+                int effort = gameManager.GetAssignedEffort(member);
+                pair.Value.SetLoad(effort, gameManager.IsOverCapacity(member));
+            }
+        }
+
+        private void RefreshSelection()
+        {
+            foreach (var pair in taskButtons)
+            {
+                pair.Value.SetSelected(pair.Key == selectedTask);
+            }
+
+            foreach (var pair in memberButtons)
+            {
+                Color? preview = selectedTask != null
+                    ? gameManager.Data.GetMatchColor(pair.Key.GetRelation(selectedTask.Type))
+                    : (Color?)null;
+                pair.Value.SetMatchPreview(preview);
+            }
+
+            if (instructionText != null)
+            {
+                instructionText.text = selectedTask != null
+                    ? string.Format(taskSelectedInstruction, selectedTask.TaskName)
+                    : defaultInstruction;
             }
         }
     }
