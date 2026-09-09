@@ -1,12 +1,10 @@
 # Mechanic → Leadership Skill Connection
 
-*(Draft skeleton — fill in near end of build (Day 3) once gameplay is final. Do not submit until completed.)*
-
 ## The mechanic
-*(TBD — 2-3 sentences: player assigns 5 tasks to 3 team members within a 90-second round; each member has a skill strength/weakness across 3 task types and a capacity limit.)*
+The player runs a single 90-second round assigning 5 fixed tasks to 3 team members by clicking a task, then a member. Each member has one skill strength and one weakness across 3 task types (Design/Analysis/Communication) and a fixed capacity of 4 effort units. Assigning past a member's capacity is allowed, not blocked — but it costs a burnout penalty at scoring time. When the round ends, the game scores every assignment (and every task left unassigned) and shows a percentage, a delegator tier, and 2-3 feedback lines naming what actually happened.
 
 ## The leadership skill: Delegation
-*(TBD — 2-3 sentences on why this teaches delegation specifically: matching task to strength, respecting capacity, and the visible cost of getting either wrong.)*
+Delegation isn't "hand off work" — it's matching the right task to the right person while respecting what they can actually carry. This prototype makes both halves of that judgment call visible and consequential: an optional color guide shows skill-match quality the moment a task is committed, and each member's live capacity load (with an explicit "over capacity" flag) shows the cost of piling on. Get the match right but overload the person, and the task's quality still degrades — you can't optimize on skill-fit alone and ignore capacity, which is exactly the failure mode real delegation training targets.
 
 ## Why the connection is genuine, not bolted on
-*(TBD — tie to the locked design's core dilemma: total task effort deliberately exceeds any single member's per-skill capacity, so "give everything to the best-fit person" structurally fails — the player is forced to make the same tradeoff a real delegator faces, not handed a puzzle with one correct answer.)*
+The numbers are load-bearing, not decorative: total task effort across the 5 tasks exceeds what any single best-fit member can absorb by themselves in two of the three skill lanes, so "give everything to its strongest-match person" structurally fails — verified by brute-forcing all 1024 possible assignments against the real scoring formula (see `Notes.md`). The player is forced into the same tradeoff a real delegator faces — spread the load, accept some mismatch, or accept burnout — not handed a puzzle with one clean optimal answer. The end-screen feedback then narrates that specific tradeoff back (best match praised, worst outcome named, burnout called out by person) rather than just returning a score.
