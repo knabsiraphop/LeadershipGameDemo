@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace LeadershipGame
 {
@@ -10,6 +11,7 @@ namespace LeadershipGame
         [SerializeField] private TMP_Text tierText;
         [SerializeField] private TMP_Text tierDescriptionText;
         [SerializeField] private TMP_Text feedbackText;
+        [SerializeField] private Button returnToStartButton;
 
         private GameManager gameManager;
 
@@ -17,6 +19,11 @@ namespace LeadershipGame
         {
             this.gameManager = gameManager;
             gameManager.OnDayEnded += HandleDayEnded;
+
+            if (returnToStartButton != null)
+            {
+                returnToStartButton.onClick.AddListener(() => gameManager.ReturnToStart());
+            }
         }
 
         private void HandleDayEnded(ScoreResult result)

@@ -90,6 +90,14 @@ namespace LeadershipGame
             OnDayEnded?.Invoke(result);
         }
 
+        public void ReturnToStart()
+        {
+            if (!IsIn(RoundState.End)) return;
+
+            assignmentTracker.Clear();
+            SetState(RoundState.Start);
+        }
+
         private bool IsIn(RoundState state) => CurrentState == state;
 
         private void SetState(RoundState next)

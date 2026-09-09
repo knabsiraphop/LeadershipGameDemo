@@ -37,10 +37,17 @@ namespace LeadershipGame
             SpawnLegend();
             BindEvents();
 
+            HandleTimerTick(gameManager.Data.Balance.RoundDuration);
+        }
+
+        public override void Show()
+        {
+            base.Show();
+
+            selectedTask = null;
             RefreshTaskColors();
             RefreshMemberLoads();
             RefreshSelection();
-            HandleTimerTick(gameManager.Data.Balance.RoundDuration);
         }
 
         private void SpawnTaskButtons()
