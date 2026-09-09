@@ -16,5 +16,7 @@ namespace LeadershipGame
         public Color UnassignedColor => visual.UnassignedColor;
 
         public Color GetMatchColor(MatchQuality quality) => visual.GetColor(quality);
+
+        public TierDisplay GetTierDisplay(ScoreTier tier) => visual.GetTierDisplay(tier);
     }
 }

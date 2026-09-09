@@ -8,6 +8,7 @@ namespace LeadershipGame
     {
         [SerializeField] private List<MatchQualityColor> matchColors;
         [SerializeField] private Color unassignedColor = Color.white;
+        [SerializeField] private List<TierDisplay> tierDisplays;
 
         public IReadOnlyList<MatchQualityColor> MatchColors => matchColors;
         public Color UnassignedColor => unassignedColor;
@@ -20,6 +21,16 @@ namespace LeadershipGame
             }
 
             return unassignedColor;
+        }
+
+        public TierDisplay GetTierDisplay(ScoreTier tier)
+        {
+            foreach (var entry in tierDisplays)
+            {
+                if (entry.Tier == tier) return entry;
+            }
+
+            return null;
         }
     }
 }
