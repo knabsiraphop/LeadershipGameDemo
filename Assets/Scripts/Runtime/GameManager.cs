@@ -7,9 +7,11 @@ namespace LeadershipGame
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private GameData gameData;
+        [SerializeField] private MonoBehaviour stateController;
 
         private readonly RoundTimer timer = new RoundTimer();
         private readonly AssignmentTracker assignmentTracker = new AssignmentTracker();
+        private IGameStateController StateController { get; set; }
 
         public GameData Data => gameData;
         public IReadOnlyList<TaskData> Tasks => gameData.Content.AllTasks;
@@ -30,6 +32,9 @@ namespace LeadershipGame
             timer.OnExpired += EndDay;
             assignmentTracker.OnAssigned += (task, member) => OnTaskAssigned?.Invoke(task, member);
             assignmentTracker.OnUnassigned += task => OnTaskUnassigned?.Invoke(task);
+
+            StateController = (IGameStateController)stateController;
+            StateController.Init(this);
         }
 
         void Update()

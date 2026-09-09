@@ -3,14 +3,13 @@ using UnityEngine;
 
 namespace LeadershipGame
 {
-    public class EndScreenUI : MonoBehaviour
+    public class EndScreenUI : GameStateUI
     {
-        [SerializeField] private GameManager gameManager;
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text tierText;
         [SerializeField] private TMP_Text feedbackText;
 
-        void Awake()
+        public override void Init(GameManager gameManager)
         {
             gameManager.OnDayEnded += HandleDayEnded;
         }
