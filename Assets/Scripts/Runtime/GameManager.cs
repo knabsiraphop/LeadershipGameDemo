@@ -19,6 +19,7 @@ namespace LeadershipGame
 
         public RoundState CurrentState { get; private set; } = RoundState.Start;
         public float RemainingTime => timer.RemainingTime;
+        public bool ColorGuideEnabled { get; set; } = true;
 
         public event Action<RoundState> OnStateChanged;
         public event Action<float> OnTimerTick;

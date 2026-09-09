@@ -67,6 +67,13 @@ namespace LeadershipGame
 
         private void SpawnLegend()
         {
+            if (legendContainer != null)
+            {
+                legendContainer.gameObject.SetActive(gameManager.ColorGuideEnabled);
+            }
+
+            if (!gameManager.ColorGuideEnabled) return;
+
             foreach (var entry in gameManager.Data.MatchColors)
             {
                 Instantiate(legendSwatchPrefab, legendContainer).Set(entry.Color, entry.Label);
@@ -129,6 +136,12 @@ namespace LeadershipGame
                 var graphic = pair.Value.Button.targetGraphic;
                 if (graphic == null) continue;
 
+                if (!gameManager.ColorGuideEnabled)
+                {
+                    graphic.color = gameManager.Data.UnassignedColor;
+                    continue;
+                }
+
                 graphic.color = member == null
                     ? gameManager.Data.UnassignedColor
                     : gameManager.Data.GetMatchColor(member.GetRelation(task.Type));
@@ -154,7 +167,7 @@ namespace LeadershipGame
 
             foreach (var pair in memberButtons)
             {
-                Color? preview = selectedTask != null
+                Color? preview = selectedTask != null && gameManager.ColorGuideEnabled
                     ? gameManager.Data.GetMatchColor(pair.Key.GetRelation(selectedTask.Type))
                     : (Color?)null;
                 pair.Value.SetMatchPreview(preview);
