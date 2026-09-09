@@ -18,6 +18,24 @@
       },
       "url": "https://package.openupm.com"
     },
+    "com.kidzdev.unity.responsive-fit": {
+      "version": "https://github.com/knabsiraphop/kidzdev-unity-responsive-fit.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0"
+      },
+      "hash": "679032151c4e701bf67a3ffa8c015c05ded9dc96"
+    },
+    "com.kidzdev.unity.sliced-fill-image": {
+      "version": "https://github.com/knabsiraphop/kidzdev-unity-sliced-fill-image.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0"
+      },
+      "hash": "e1e72da05ce2129a3ea45f22e7d1d772bbe3427a"
+    },
     "com.unity.ext.nunit": {
       "version": "2.0.5",
       "depth": 2,
