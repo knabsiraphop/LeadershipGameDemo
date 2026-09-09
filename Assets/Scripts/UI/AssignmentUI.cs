@@ -123,6 +123,9 @@ namespace LeadershipGame
             {
                 var task = pair.Key;
                 var member = gameManager.GetAssignment(task);
+
+                pair.Value.SetAssignedMember(member);
+
                 var graphic = pair.Value.Button.targetGraphic;
                 if (graphic == null) continue;
 
