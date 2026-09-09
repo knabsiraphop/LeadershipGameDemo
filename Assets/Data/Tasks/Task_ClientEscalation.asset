@@ -15,4 +15,4 @@ MonoBehaviour:
   TaskName: Client escalation call
   Type: 2
   Urgency: 0
-  Effort: 2
+  Effort: 1
