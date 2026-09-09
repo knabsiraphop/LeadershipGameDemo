@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LeadershipGame
@@ -6,18 +7,14 @@ namespace LeadershipGame
     {
         [SerializeField] private GameContentConfig content;
         [SerializeField] private GameBalanceConfig balance;
-
-        [SerializeField] private Color strongMatchColor = Color.green;
-        [SerializeField] private Color neutralMatchColor = Color.yellow;
-        [SerializeField] private Color weakMatchColor = Color.red;
-        [SerializeField] private Color unassignedColor = Color.white;
+        [SerializeField] private GameVisualConfig visual;
 
         public GameContentConfig Content => content;
         public GameBalanceConfig Balance => balance;
 
-        public Color StrongMatchColor => strongMatchColor;
-        public Color NeutralMatchColor => neutralMatchColor;
-        public Color WeakMatchColor => weakMatchColor;
-        public Color UnassignedColor => unassignedColor;
+        public IReadOnlyList<MatchQualityColor> MatchColors => visual.MatchColors;
+        public Color UnassignedColor => visual.UnassignedColor;
+
+        public Color GetMatchColor(MatchQuality quality) => visual.GetColor(quality);
     }
 }
