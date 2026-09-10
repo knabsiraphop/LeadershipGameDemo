@@ -23,3 +23,16 @@ MonoBehaviour:
     Color: {r: 1, g: 0, b: 0, a: 1}
     Label: weak
   unassignedColor: {r: 1, g: 1, b: 1, a: 1}
+  tierDisplays:
+  - Tier: 0
+    Label: Strong Delegator
+    Description: Matched skill to task and kept everyone under capacity.
+    Color: {r: 0, g: 0.6, b: 0, a: 1}
+  - Tier: 1
+    Label: Developing
+    Description: Reasonable calls made, but some matches or capacity limits slipped.
+    Color: {r: 0.8, g: 0.6, b: 0, a: 1}
+  - Tier: 2
+    Label: Overloaded Manager
+    Description: Too many mismatches or one person carrying the load.
+    Color: {r: 0.8, g: 0, b: 0, a: 1}

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace LeadershipGame
 {
     [System.Serializable]
@@ -6,5 +8,6 @@ namespace LeadershipGame
         public ScoreTier Tier;
         public string Label;
         public string Description;
+        public Color Color = Color.white;
     }
 }

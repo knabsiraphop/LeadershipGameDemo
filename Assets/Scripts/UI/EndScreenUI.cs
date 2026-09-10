@@ -39,9 +39,19 @@ namespace LeadershipGame
             var tierDisplay = gameManager.Data.GetTierDisplay(result.Tier);
             tierText.text = tierDisplay != null ? tierDisplay.Label : result.Tier.ToString();
 
+            if (tierDisplay != null)
+            {
+                tierText.color = tierDisplay.Color;
+            }
+
             if (tierDescriptionText != null)
             {
                 tierDescriptionText.text = tierDisplay != null ? tierDisplay.Description : "";
+
+                if (tierDisplay != null)
+                {
+                    tierDescriptionText.color = tierDisplay.Color;
+                }
             }
 
             feedbackText.text = string.Join("\n", result.FeedbackBullets);
